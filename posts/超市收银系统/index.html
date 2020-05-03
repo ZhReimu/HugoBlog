@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.60.1" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.69.2" /><meta name="theme-color" content="#fff" />
         <script>
             const userPrefers = localStorage.getItem('theme');
             const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -77,13 +77,13 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2020-05-03T00:35:22+00:00",
-        "dateModified": "2020-05-03T00:52:27+00:00",
+        "dateModified": "2020-05-03T08:52:26+08:00",
         "url": "https://www.fuckbaidu.me/posts/%E8%B6%85%E5%B8%82%E6%94%B6%E9%93%B6%E7%B3%BB%E7%BB%9F/",
         "headline": "超市收银系统",
         "description": "C语言实现超市收银系统",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  1505 ,
+        "wordCount":  1506 ,
         "image": "https://www.fuckbaidu.me/icons/apple-touch-icon.png",
         "author": {
             "@type": "Person",
@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="https://www.fuckbaidu.me/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2020-05-03T00:35:22+00:00" />
-    <meta property="article:modified_time" content="2020-05-03T00:52:27+00:00" />
+    <meta property="article:modified_time" content="2020-05-03T08:52:26+08:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -236,7 +236,7 @@
        发布时间:<time datetime="2020-05-03T00:35:22+00:00" class="post-meta-item published">2020.5.3</time>
     
     
-        修改时间:<time datetime="2020-05-03T00:52:27+00:00" class="post-meta-item modified">2020.5.3</time>
+        修改时间:<time datetime="2020-05-03T08:52:26+08:00" class="post-meta-item modified">2020.5.3</time>
     
     
     
@@ -250,7 +250,7 @@
         
     
     
-       字数:<span class="post-meta-item wordcount">1505</span>
+       字数:<span class="post-meta-item wordcount">1506</span>
     
     
         阅读花费:<span class="post-meta-item reading-time">4&nbsp;分钟</span>
@@ -429,54 +429,54 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// 本程序所有浮点数据均保留2位小数
-</span><span class="c1"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;stdio.h&#34;</span><span class="cp">
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;stdio.h&#34;</span><span class="cp">
 </span><span class="cp"></span><span class="c1">// 标准头文件
-</span><span class="c1"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;stdlib.h&#34;</span><span class="cp">
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;stdlib.h&#34;</span><span class="cp">
 </span><span class="cp"></span><span class="c1">// 为调用system函数做准备
-</span><span class="c1"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;string.h&#34;</span><span class="cp">
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;string.h&#34;</span><span class="cp">
 </span><span class="cp"></span><span class="c1">// 字符串头文件
-</span><span class="c1"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&#34;iostream&#34;</span><span class="cp">
-</span><span class="cp"></span><span class="cp">#</span><span class="cp">include</span><span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;iostream&#34;</span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;string&gt;</span><span class="cp">
 </span><span class="cp"></span><span class="c1">// c++头文件
 </span><span class="c1"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="c1">// c++的std命名空间
-</span><span class="c1"></span><span class="cp">#</span><span class="cp">define NUM 4</span><span class="cp">
+</span><span class="c1"></span><span class="cp">#define NUM 4
 </span><span class="cp"></span><span class="c1">// 商品数量
-</span><span class="c1"></span><span class="kt">void</span> <span class="nf">result</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">quantity</span><span class="p">,</span> <span class="n">string</span> <span class="o">*</span> <span class="n">item</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span><span class="n">price</span><span class="p">,</span> <span class="kt">int</span> <span class="n">off</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">result</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">quantity</span><span class="p">,</span> <span class="n">string</span> <span class="o">*</span> <span class="n">item</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span><span class="n">price</span><span class="p">,</span> <span class="kt">int</span> <span class="n">off</span><span class="p">);</span>
 <span class="c1">// 函数声明
-</span><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span>
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-	<span class="n">string</span> <span class="n">item</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">粤利粤</span><span class="s">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">雷碧</span><span class="s">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">康帅傅</span><span class="s">&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;</span><span class="s">咏动</span><span class="s">&#34;</span> <span class="p">}</span><span class="p">;</span>
+	<span class="n">string</span> <span class="n">item</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#34;粤利粤&#34;</span><span class="p">,</span> <span class="s">&#34;雷碧&#34;</span><span class="p">,</span> <span class="s">&#34;康帅傅&#34;</span><span class="p">,</span> <span class="s">&#34;咏动&#34;</span> <span class="p">};</span>
 	<span class="c1">// 定义商品数组
-</span><span class="c1"></span>	<span class="n">system</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">color 0a</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span>	<span class="n">system</span><span class="p">(</span><span class="s">&#34;color 0a&#34;</span><span class="p">);</span>
 	<span class="c1">// 设置字体颜色
-</span><span class="c1"></span>	<span class="n">system</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">mode con cols=999 lines=999</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span>	<span class="n">system</span><span class="p">(</span><span class="s">&#34;mode con cols=999 lines=999&#34;</span><span class="p">);</span>
 	<span class="c1">// 设置窗口大小
-</span><span class="c1"></span>	<span class="kt">float</span> <span class="n">price</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">19.9</span><span class="p">,</span> <span class="mf">29.9</span><span class="p">,</span> <span class="mf">99.9</span> <span class="p">}</span><span class="p">;</span>
+</span><span class="c1"></span>	<span class="kt">float</span> <span class="n">price</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">19.9</span><span class="p">,</span> <span class="mf">29.9</span><span class="p">,</span> <span class="mf">99.9</span> <span class="p">};</span>
 	<span class="c1">// 定义价格数组
 </span><span class="c1"></span>	<span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">c_item</span><span class="p">,</span> <span class="n">cti</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">off</span><span class="p">,</span> <span class="n">cu</span><span class="p">,</span> <span class="n">ct</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 	<span class="c1">// 定义循环变量，商品代号变量，临时变量，折扣变量用户数量，用户计算变量
-</span><span class="c1"></span>	<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">欢迎使用Mr.X自助收银系统</span><span class="se">\n</span><span class="s">以下是本店出售的物品编号:</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="p">)</span>
+</span><span class="c1"></span>	<span class="n">puts</span><span class="p">(</span><span class="s">&#34;欢迎使用Mr.X自助收银系统</span><span class="se">\n</span><span class="s">以下是本店出售的物品编号:&#34;</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 		<span class="c1">// 遍历数组输出商品代号，名称，价格
 </span><span class="c1"></span>	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">商品编号%d</span><span class="se">\t</span><span class="s">品名:</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="p">;</span>
-		<span class="n">cout</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">item</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">;</span>
-		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="se">\t</span><span class="s">价格:%.2f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">)</span><span class="p">;</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;商品编号%d</span><span class="se">\t</span><span class="s">品名:&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\t</span><span class="s">价格:%.2f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 	<span class="p">}</span>
-	<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入顾客人数</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-	<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">cu</span><span class="p">;</span>
-	<span class="k">while</span> <span class="p">(</span><span class="n">cu</span><span class="o">-</span><span class="o">-</span><span class="p">)</span>
+	<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入顾客人数&#34;</span><span class="p">);</span>
+	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">cu</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">cu</span><span class="o">--</span><span class="p">)</span>
 		<span class="c1">// 为多用户准备循环
 </span><span class="c1"></span>	<span class="p">{</span>
-		<span class="kt">int</span> <span class="n">quantity</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">}</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">quantity</span><span class="p">[</span><span class="n">NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
 		<span class="c1">// 定义数量数组
-</span><span class="c1"></span>		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="se">\n</span><span class="s">请第%d位客户开始购物</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">ct</span><span class="o">+</span><span class="o">+</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span>		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">请第%d位客户开始购物</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">ct</span><span class="o">++</span><span class="p">);</span>
 		<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 			<span class="c1">// 单个顾客购物
 </span><span class="c1"></span>		<span class="p">{</span>
-			<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入您购买的物品编号</span><span class="se">\n</span><span class="s">开始结算请输入0</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-			<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">c_item</span><span class="p">;</span>
+			<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入您购买的物品编号</span><span class="se">\n</span><span class="s">开始结算请输入0&#34;</span><span class="p">);</span>
+			<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">c_item</span><span class="p">;</span>
 			<span class="c1">// 输入商品编号
 </span><span class="c1"></span>			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">c_item</span><span class="p">)</span>
 				<span class="k">break</span><span class="p">;</span>
@@ -485,53 +485,53 @@
 				<span class="c1">// 根据情况对相应的quantity进行增加
 </span><span class="c1"></span>			<span class="p">{</span>
 			<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
-				<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入购买件数</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">)</span>
+				<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入购买件数&#34;</span><span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 				<span class="p">{</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>
-					<span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span><span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t</span><span class="p">;</span>
 				<span class="p">}</span>
 				<span class="k">else</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 				<span class="k">break</span><span class="p">;</span>
 			<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
-				<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入购买件数</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">)</span>
+				<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入购买件数&#34;</span><span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 				<span class="p">{</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>
-					<span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span><span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t</span><span class="p">;</span>
 				<span class="p">}</span>
 				<span class="k">else</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 				<span class="k">break</span><span class="p">;</span>
 			<span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
-				<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入购买件数</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">)</span>
+				<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入购买件数&#34;</span><span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 				<span class="p">{</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>
-					<span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span><span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t</span><span class="p">;</span>
 				<span class="p">}</span>
 				<span class="k">else</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 				<span class="k">break</span><span class="p">;</span>
 			<span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
-				<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入购买件数</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="p">)</span>
+				<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请输入购买件数&#34;</span><span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 				<span class="p">{</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">;</span>
-					<span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span><span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+					<span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">t</span><span class="p">;</span>
 				<span class="p">}</span>
 				<span class="k">else</span>
-					<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="p">;</span>
+					<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">quantity</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
 				<span class="k">break</span><span class="p">;</span>
 			<span class="k">default</span><span class="o">:</span>
-				<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">本店暂无您想要的商品,我们正在努力添加商品中!</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+				<span class="n">puts</span><span class="p">(</span><span class="s">&#34;本店暂无您想要的商品,我们正在努力添加商品中!&#34;</span><span class="p">);</span>
 			<span class="p">}</span>
 			<span class="c1">// 结束switch
 </span><span class="c1"></span>		<span class="p">}</span>
 		<span class="c1">// 结束循环
-</span><span class="c1"></span>		<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请展示你的会员卡打折数</span><span class="se">\n</span><span class="s">1.金卡(八五折)</span><span class="se">\n</span><span class="s">2.银卡(九五折)</span><span class="se">\n</span><span class="s">3.超级会员卡(八折)</span><span class="se">\n</span><span class="s">没有请输入0</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-		<span class="n">cin</span> <span class="o">&gt;</span><span class="o">&gt;</span> <span class="n">off</span><span class="p">;</span>
+</span><span class="c1"></span>		<span class="n">puts</span><span class="p">(</span><span class="s">&#34;请展示你的会员卡打折数</span><span class="se">\n</span><span class="s">1.金卡(八五折)</span><span class="se">\n</span><span class="s">2.银卡(九五折)</span><span class="se">\n</span><span class="s">3.超级会员卡(八折)</span><span class="se">\n</span><span class="s">没有请输入0&#34;</span><span class="p">);</span>
+		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">off</span><span class="p">;</span>
 		<span class="k">switch</span> <span class="p">(</span><span class="n">off</span><span class="p">)</span>
 		<span class="p">{</span>
 		<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
@@ -544,13 +544,13 @@
 			<span class="n">off</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
 			<span class="k">break</span><span class="p">;</span>
 		<span class="k">default</span><span class="o">:</span>
-			<span class="n">puts</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">卡片错误！系统将按照不是VIP处理！</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+			<span class="n">puts</span><span class="p">(</span><span class="s">&#34;卡片错误！系统将按照不是VIP处理！&#34;</span><span class="p">);</span>
 		<span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
 			<span class="n">off</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 			<span class="k">break</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="c1">// 计算会员打折数
-</span><span class="c1"></span>		<span class="n">result</span><span class="p">(</span><span class="n">quantity</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">off</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span>		<span class="n">result</span><span class="p">(</span><span class="n">quantity</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">off</span><span class="p">);</span>
 		<span class="c1">// 调用函数输出结果
 </span><span class="c1"></span>	<span class="p">}</span>
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -564,28 +564,28 @@
 	<span class="c1">// 定义循环变量i和总数量qu
 </span><span class="c1"></span>	<span class="kt">float</span> <span class="n">before</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 	<span class="c1">// 定义折扣前总价格
-</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="p">)</span>
-		<span class="n">qu</span> <span class="o">+</span><span class="o">=</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">;</span>
+</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">qu</span> <span class="o">+=</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 	<span class="c1">// 遍历数组求出总数量
-</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="p">)</span>
-		<span class="n">before</span> <span class="o">+</span><span class="o">=</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">;</span>
+</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">before</span> <span class="o">+=</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 	<span class="c1">// 遍历数组求出总价格
-</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">+</span><span class="o">+</span><span class="p">)</span>
+</span><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">商品</span><span class="se">\t</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
-		<span class="n">cout</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">item</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">;</span>
-		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="se">\t</span><span class="s">%d件</span><span class="se">\t</span><span class="s">小记%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">,</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="p">)</span><span class="p">;</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;商品</span><span class="se">\t</span><span class="s">&#34;</span><span class="p">);</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\t</span><span class="s">%d件</span><span class="se">\t</span><span class="s">小记%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 		<span class="c1">// 遍历数组输出每件物品购买情况
 </span><span class="c1"></span>	<span class="p">}</span>
 	<span class="k">if</span> <span class="p">(</span><span class="n">off</span><span class="p">)</span>
 		<span class="c1">// 判断折扣情况，根据情况输出相应的数据
-</span><span class="c1"></span>		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">您总共买了%d件商品</span><span class="se">\n</span><span class="s">原价%.2f元。经过%1.1f折后实付%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">qu</span><span class="p">,</span>
-			   <span class="n">before</span><span class="p">,</span> <span class="n">off</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">before</span> <span class="o">*</span> <span class="p">(</span><span class="n">off</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+</span><span class="c1"></span>		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;您总共买了%d件商品</span><span class="se">\n</span><span class="s">原价%.2f元。经过%1.1f折后实付%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">qu</span><span class="p">,</span>
+			   <span class="n">before</span><span class="p">,</span> <span class="n">off</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">before</span> <span class="o">*</span> <span class="p">(</span><span class="n">off</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">));</span>
 	<span class="k">else</span>
 		<span class="n">printf</span>
-			<span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">您总共买了%d件商品</span><span class="se">\n</span><span class="s">原价%.2f元。普通会员不打折。实付%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
-			 <span class="n">qu</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">before</span><span class="p">)</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">谢谢惠顾，欢迎下次光临</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+			<span class="p">(</span><span class="s">&#34;您总共买了%d件商品</span><span class="se">\n</span><span class="s">原价%.2f元。普通会员不打折。实付%.2f元</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+			 <span class="n">qu</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">before</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;谢谢惠顾，欢迎下次光临</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -616,7 +616,7 @@
 
 
         
-    <div class="updated-badge-container"><div title="Updated @ 2020-05-03 00:52:27 UTC" style="cursor:help;display:inline-block">
+    <div class="updated-badge-container"><div title="Updated @ 2020-05-03 08:52:26 CST" style="cursor:help;display:inline-block">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2020-05-03</text><text x="915" y="140" textLength="650" transform="scale(.1)">2020-05-03</text></g></svg></div></div>
 
