@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.69.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.60.1" /><meta name="theme-color" content="#fff" />
         <script>
             const userPrefers = localStorage.getItem('theme');
             const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -77,7 +77,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2020-05-03T00:35:22+00:00",
-        "dateModified": "2020-05-03T09:10:32+08:00",
+        "dateModified": "2020-05-03T01:10:32+00:00",
         "url": "https://www.fuckbaidu.me/posts/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%BB%83%E4%B9%A0%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%972/",
         "headline": "四则运算练习器2",
         "description": "C语言四则运算并判断正误",
@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="https://www.fuckbaidu.me/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2020-05-03T00:35:22+00:00" />
-    <meta property="article:modified_time" content="2020-05-03T09:10:32+08:00" />
+    <meta property="article:modified_time" content="2020-05-03T01:10:32+00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -236,9 +236,10 @@
        发布时间:<time datetime="2020-05-03T00:35:22+00:00" class="post-meta-item published">2020.5.3</time>
     
     
-        修改时间:<time datetime="2020-05-03T09:10:32+08:00" class="post-meta-item modified">2020.5.3</time>
+        修改时间:<time datetime="2020-05-03T01:10:32+00:00" class="post-meta-item modified">2020.5.3</time>
     
     
+    <br/>
     
         
         
@@ -386,46 +387,46 @@
 </span><span class="lnt">117
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="kt">int</span> <span class="nf">rand_n</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">char</span><span class="p">);</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="cp">#</span><span class="cp">include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">rand_n</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">char</span><span class="p">)</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="p">)</span>
 <span class="p">{</span>
 
 	<span class="kt">int</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fault</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 	<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 	<span class="c1">// 设置两个操作数的取值范围
 </span><span class="c1"></span>	<span class="kt">float</span> <span class="n">par1</span><span class="p">,</span> <span class="n">par2</span><span class="p">,</span> <span class="n">anwser</span><span class="p">;</span>
-	<span class="kt">char</span> <span class="n">sign</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="sc">&#39;+&#39;</span><span class="p">,</span> <span class="sc">&#39;-&#39;</span><span class="p">,</span> <span class="sc">&#39;*&#39;</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span> <span class="p">},</span> <span class="n">f</span><span class="p">;</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;欢迎使用Mr.X四则运算练习系统</span><span class="se">\n</span><span class="s">注：做除法时请保留6位小数</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;请输入题目个数</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-	<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">);</span>
+	<span class="kt">char</span> <span class="n">sign</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">+</span><span class="sc">&#39;</span><span class="p">,</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">-</span><span class="sc">&#39;</span><span class="p">,</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">*</span><span class="sc">&#39;</span><span class="p">,</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">/</span><span class="sc">&#39;</span> <span class="p">}</span><span class="p">,</span> <span class="n">f</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">欢迎使用Mr.X四则运算练习系统</span><span class="se">\n</span><span class="s">注：做除法时请保留6位小数</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">请输入题目个数</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">%d</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">)</span><span class="p">;</span>
 	<span class="n">ct</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
-	<span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="o">-</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">f</span> <span class="o">=</span> <span class="n">sign</span><span class="p">[</span><span class="n">rand_n</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">++</span><span class="p">)];</span>
-		<span class="n">par1</span> <span class="o">=</span> <span class="n">rand_n</span><span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">seed</span><span class="o">++</span><span class="p">);</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="n">sign</span><span class="p">[</span><span class="n">rand_n</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">+</span><span class="o">+</span><span class="p">)</span><span class="p">]</span><span class="p">;</span>
+		<span class="n">par1</span> <span class="o">=</span> <span class="n">rand_n</span><span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">seed</span><span class="o">+</span><span class="o">+</span><span class="p">)</span><span class="p">;</span>
 		<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 		<span class="p">{</span>
-			<span class="n">par2</span> <span class="o">=</span> <span class="n">rand_n</span><span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">seed</span><span class="o">++</span><span class="p">);</span>
-			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">par2</span><span class="o">&amp;&amp;</span><span class="n">f</span><span class="o">==</span><span class="sc">&#39;/&#39;</span><span class="p">)</span>
+			<span class="n">par2</span> <span class="o">=</span> <span class="n">rand_n</span><span class="p">(</span><span class="n">min</span><span class="p">,</span> <span class="n">max</span><span class="p">,</span> <span class="n">seed</span><span class="o">+</span><span class="o">+</span><span class="p">)</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">par2</span><span class="o">&amp;</span><span class="o">&amp;</span><span class="n">f</span><span class="o">=</span><span class="o">=</span><span class="sa"></span><span class="sc">&#39;</span><span class="sc">/</span><span class="sc">&#39;</span><span class="p">)</span>
 				<span class="k">continue</span><span class="p">;</span>
 			<span class="k">else</span>
 				<span class="k">break</span><span class="p">;</span>
 		<span class="p">}</span>
-		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%.0f%c%.0f=&#34;</span><span class="p">,</span><span class="n">par1</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">par2</span><span class="p">);</span>
-		<span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%f&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anwser</span><span class="p">);</span>
-		<span class="k">if</span> <span class="p">(</span><span class="n">cal</span><span class="p">(</span><span class="n">par1</span><span class="p">,</span> <span class="n">par2</span><span class="p">,</span> <span class="n">anwser</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
-			<span class="n">correct</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">%.0f%c%.0f=</span><span class="s">&#34;</span><span class="p">,</span><span class="n">par1</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">par2</span><span class="p">)</span><span class="p">;</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">%f</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">anwser</span><span class="p">)</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">cal</span><span class="p">(</span><span class="n">par1</span><span class="p">,</span> <span class="n">par2</span><span class="p">,</span> <span class="n">anwser</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="p">)</span>
+			<span class="n">correct</span><span class="o">+</span><span class="o">+</span><span class="p">;</span>
 		<span class="k">else</span>
-			<span class="n">fault</span><span class="o">++</span><span class="p">;</span>
+			<span class="n">fault</span><span class="o">+</span><span class="o">+</span><span class="p">;</span>
 	<span class="p">}</span>
 	<span class="n">printf</span>
-		<span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">训练结束！总共有%d道题目</span><span class="se">\n</span><span class="s">一题%d分，总分是%d分</span><span class="se">\n</span><span class="s">你做对了%d道题目</span><span class="se">\n</span><span class="s">做错了%d道题目</span><span class="se">\n</span><span class="s">总共得到了%d分</span><span class="se">\n\n</span><span class="s">欢迎下次使用！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
-		 <span class="n">ct</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">score</span> <span class="o">*</span> <span class="n">ct</span><span class="p">,</span> <span class="n">correct</span><span class="p">,</span> <span class="n">fault</span><span class="p">,</span> <span class="n">correct</span> <span class="o">*</span> <span class="n">score</span><span class="p">);</span>
+		<span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="se">\n</span><span class="s">训练结束！总共有%d道题目</span><span class="se">\n</span><span class="s">一题%d分，总分是%d分</span><span class="se">\n</span><span class="s">你做对了%d道题目</span><span class="se">\n</span><span class="s">做错了%d道题目</span><span class="se">\n</span><span class="s">总共得到了%d分</span><span class="se">\n</span><span class="se">\n</span><span class="s">欢迎下次使用！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+		 <span class="n">ct</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">score</span> <span class="o">*</span> <span class="n">ct</span><span class="p">,</span> <span class="n">correct</span><span class="p">,</span> <span class="n">fault</span><span class="p">,</span> <span class="n">correct</span> <span class="o">*</span> <span class="n">score</span><span class="p">)</span><span class="p">;</span>
 
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -433,72 +434,72 @@
 <span class="kt">int</span> <span class="nf">rand_n</span><span class="p">(</span><span class="kt">int</span> <span class="n">min</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max</span><span class="p">,</span> <span class="kt">int</span> <span class="n">seed</span><span class="p">)</span>
 <span class="c1">// 返回一个随机数，整数
 </span><span class="c1"></span><span class="p">{</span>
-	<span class="n">srand</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="o">+</span> <span class="n">seed</span><span class="p">);</span>
-	<span class="k">return</span> <span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">max</span> <span class="o">-</span> <span class="n">min</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">min</span><span class="p">;</span>
+	<span class="n">srand</span><span class="p">(</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="o">+</span> <span class="n">seed</span><span class="p">)</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">rand</span><span class="p">(</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">max</span> <span class="o">-</span> <span class="n">min</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">min</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">cal</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">z</span><span class="p">,</span> <span class="kt">char</span> <span class="n">c</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
-	<span class="n">t</span> <span class="o">=</span> <span class="n">fabs</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mf">1e-6</span><span class="p">);</span>
+	<span class="n">t</span> <span class="o">=</span> <span class="n">fabs</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">&lt;</span><span class="o">=</span> <span class="p">(</span><span class="mf">1e-6</span><span class="p">)</span><span class="p">;</span>
 	<span class="k">switch</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
 	<span class="p">{</span>
-	<span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
-		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+	<span class="k">case</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">+</span><span class="sc">&#39;</span><span class="o">:</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">=</span><span class="o">=</span> <span class="n">z</span><span class="p">)</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">else</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;非常遗憾，你做错了，正确答案是%.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">非常遗憾，你做错了，正确答案是%.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">break</span><span class="p">;</span>
 
-	<span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
-		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+	<span class="k">case</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">-</span><span class="sc">&#39;</span><span class="o">:</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">=</span><span class="o">=</span> <span class="n">z</span><span class="p">)</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">else</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;非常遗憾，你做错了，正确答案是%.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">非常遗憾，你做错了，正确答案是%.0f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">break</span><span class="p">;</span>
 
-	<span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="o">:</span>
-		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">||</span> <span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="p">))</span>
+	<span class="k">case</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">*</span><span class="sc">&#39;</span><span class="o">:</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">=</span><span class="o">=</span> <span class="n">z</span> <span class="o">|</span><span class="o">|</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span><span class="o">&amp;</span> <span class="n">t</span> <span class="o">|</span><span class="o">|</span> <span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">)</span><span class="p">)</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">else</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;非常遗憾，你做错了，正确答案是%f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">非常遗憾，你做错了，正确答案是%f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 		<span class="p">}</span>
 
 
 		<span class="k">break</span><span class="p">;</span>
 
-	<span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="o">:</span>
-		<span class="k">if</span> <span class="p">((</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">))</span>
+	<span class="k">case</span> <span class="sa"></span><span class="sc">&#39;</span><span class="sc">/</span><span class="sc">&#39;</span><span class="o">:</span>
+		<span class="k">if</span> <span class="p">(</span><span class="p">(</span><span class="n">y</span> <span class="o">!</span><span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span><span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span> <span class="o">=</span><span class="o">=</span> <span class="n">z</span><span class="p">)</span><span class="p">)</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">回答正确！干得漂亮！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">else</span>
 		<span class="p">{</span>
-			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;非常遗憾，你做错了，正确答案是%f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">);</span>
+			<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">非常遗憾，你做错了，正确答案是%f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">)</span><span class="p">;</span>
 			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 		<span class="p">}</span>
 		<span class="k">break</span><span class="p">;</span>
 
 	<span class="k">default</span><span class="o">:</span>
-		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;本程序只支持四则运算！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;</span><span class="s">本程序只支持四则运算！</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">)</span><span class="p">;</span>
 	<span class="p">}</span>
 
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -532,7 +533,7 @@
 
 
         
-    <div class="updated-badge-container"><div title="Updated @ 2020-05-03 09:10:32 CST" style="cursor:help;display:inline-block">
+    <div class="updated-badge-container"><div title="Updated @ 2020-05-03 01:10:32 UTC" style="cursor:help;display:inline-block">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2020-05-03</text><text x="915" y="140" textLength="650" transform="scale(.1)">2020-05-03</text></g></svg></div></div>
 
