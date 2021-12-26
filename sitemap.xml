@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://example.com/categories/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/java/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/kotlin/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/categories/kotlin/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/tags/%E6%98%93%E4%BD%8D%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
+    <loc>https://example.com/posts/%E6%98%93%E4%BD%8D%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2021-12-26T10:42:36+08:00</lastmod>
+  </url><url>
     <loc>https://example.com/tags/aria2/</loc>
     <lastmod>2020-05-04T07:31:45+08:00</lastmod>
   </url><url>
     <loc>https://example.com/posts/aria2%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-05-04T07:31:45+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/</loc>
-    <lastmod>2020-05-04T07:31:45+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/</loc>
-    <lastmod>2020-05-04T07:31:45+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/posts/</loc>
-    <lastmod>2020-05-04T07:31:45+08:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/</loc>
     <lastmod>2020-05-04T07:31:45+08:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/%E4%B8%8B%E8%BD%BD%E5%99%A8/</loc>
