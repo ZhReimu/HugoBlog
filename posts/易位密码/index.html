@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.91.2" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.104.2" /><meta name="theme-color" content="#fff" />
     <meta name="color-scheme" content="light dark">
 
     
@@ -21,7 +21,7 @@
 
     
     
-        <script src="/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js"></script>
+        <script src="/js/meme.min.e46abe484398824efc70edec3126437916974df592d7c395b44f8f60e0f57e9d.js"></script>
 
     
 
@@ -400,156 +400,156 @@
 </span><span class="lnt">149
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">import</span> <span class="nn">java.util.*</span>
-<span class="k">import</span> <span class="nn">kotlin.collections.HashMap</span>
-
-<span class="k">object</span> <span class="nc">Main</span> <span class="p">{</span>
-
-    <span class="nd">@JvmStatic</span>
-    <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">key</span> <span class="p">=</span> <span class="s2">&#34;aoada&#34;</span>
-        <span class="k">val</span> <span class="py">text</span> <span class="p">=</span> <span class="s2">&#34;12345&#34;</span>
-        <span class="k">val</span> <span class="py">enc</span> <span class="p">=</span> <span class="n">text</span><span class="p">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;密钥为 </span><span class="si">${key.genKey().joinToString(&#34;&#34;)}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;明文 -&gt; </span><span class="si">$text</span><span class="s2">, 加密后 -&gt; </span><span class="si">${text.encrypt(key)}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;密文 -&gt; </span><span class="si">$enc</span><span class="s2">, 解密后 -&gt; </span><span class="si">${enc.decrypt(key)}</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">data</span> <span class="k">class</span> <span class="nc">EncryptList</span><span class="p">(</span><span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">Char</span><span class="p">,</span> <span class="k">val</span> <span class="py">list</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;)</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">genKey</span><span class="p">():</span> <span class="n">MutableList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">el</span> <span class="o">-&gt;</span>
-            <span class="k">if</span> <span class="p">(!</span><span class="n">el</span><span class="p">.</span><span class="n">isLetterOrDigit</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥必须为数字或字母&#34;</span><span class="p">)</span>
-            <span class="p">}</span>
-            <span class="k">var</span> <span class="py">t</span> <span class="p">=</span> <span class="n">el</span><span class="p">.</span><span class="n">uppercaseChar</span><span class="p">()</span>
-            <span class="k">var</span> <span class="py">digitCount</span> <span class="p">=</span> <span class="m">0</span>
-            <span class="k">var</span> <span class="py">letterCount</span> <span class="p">=</span> <span class="m">0</span>
-            <span class="c1">// 如果 密钥队列里已经存在当前字符了，那就对下一个字符进行处理
-</span><span class="c1"></span>            <span class="c1">// 尝试顺移
-</span><span class="c1"></span>            <span class="k">while</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="p">{</span>
-                <span class="k">when</span> <span class="p">{</span>
-                    <span class="n">t</span><span class="p">.</span><span class="n">isDigit</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">{</span>
-                        <span class="n">t</span> <span class="o">+=</span> <span class="m">1</span>
-                        <span class="n">digitCount</span><span class="o">++</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="p">&gt;</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="n">t</span> <span class="p">=</span> <span class="sc">&#39;0&#39;</span>
-                        <span class="p">}</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">digitCount</span> <span class="p">&gt;</span> <span class="m">10</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥中的数字过多！&#34;</span><span class="p">)</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                    <span class="n">t</span><span class="p">.</span><span class="n">isLetter</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">{</span>
-                        <span class="n">t</span> <span class="o">+=</span> <span class="m">1</span>
-                        <span class="n">letterCount</span><span class="o">++</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="p">&gt;</span> <span class="sc">&#39;Z&#39;</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="n">t</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>
-                        <span class="p">}</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">letterCount</span> <span class="p">&gt;</span> <span class="m">26</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥中的字母过多！&#34;</span><span class="p">)</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">():</span> <span class="n">MutableList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">it</span> <span class="o">!=</span> <span class="sc">&#39; &#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="k">it</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;.</span><span class="n">genEncrypt</span><span class="p">():</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">sortedBy</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">id</span> <span class="p">}.</span><span class="n">forEach</span> <span class="p">{</span>
-            <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="k">it</span><span class="p">.</span><span class="n">list</span><span class="p">.</span><span class="n">joinToString</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">))</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;.</span><span class="n">genDecrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">()</span>
-        <span class="k">var</span> <span class="py">column</span> <span class="p">=</span> <span class="m">0</span>
-        <span class="k">val</span> <span class="py">xSize</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">size</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">column</span> <span class="o">&lt;=</span> <span class="n">xSize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">().</span><span class="n">forEach</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">el</span> <span class="o">-&gt;</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="k">it</span> <span class="o">==</span> <span class="n">el</span><span class="p">.</span><span class="n">id</span> <span class="o">&amp;&amp;</span> <span class="n">el</span><span class="p">.</span><span class="n">list</span><span class="p">.</span><span class="n">size</span> <span class="p">&gt;</span> <span class="n">column</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">list</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="n">column</span><span class="o">++</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">keyArray</span> <span class="p">=</span> <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">()</span>
-        <span class="k">val</span> <span class="py">textArray</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">()</span>
-        <span class="k">val</span> <span class="py">keySize</span> <span class="p">=</span> <span class="n">keyArray</span><span class="p">.</span><span class="n">size</span>
-        <span class="k">val</span> <span class="py">textSize</span> <span class="p">=</span> <span class="n">textArray</span><span class="p">.</span><span class="n">size</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;()</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">0</span> <span class="n">until</span> <span class="n">keySize</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
-            <span class="k">var</span> <span class="py">j</span> <span class="p">=</span> <span class="n">i</span>
-            <span class="k">do</span> <span class="p">{</span>
-                <span class="n">runCatching</span> <span class="p">{</span>
-                    <span class="n">list</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">textArray</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-                <span class="p">}.</span><span class="n">onFailure</span> <span class="p">{</span>
-                    <span class="k">it</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">()</span>
-                    <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥过长或明文过短，请尝试缩短密钥位数或增加明文长度！&#34;</span><span class="p">)</span>
-                <span class="p">}</span>
-                <span class="n">j</span> <span class="o">+=</span> <span class="n">keySize</span>
-            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="p">&lt;</span> <span class="n">textSize</span><span class="p">)</span>
-            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">EncryptList</span><span class="p">(</span><span class="n">keyArray</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">list</span><span class="p">))</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">genEncrypt</span><span class="p">()</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">val</span> <span class="py">keyArray</span> <span class="p">=</span> <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">()</span>
-        <span class="k">val</span> <span class="py">textArray</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">()</span>
-        <span class="k">val</span> <span class="py">keySize</span> <span class="p">=</span> <span class="n">keyArray</span><span class="p">.</span><span class="n">size</span>
-        <span class="k">val</span> <span class="py">textSize</span> <span class="p">=</span> <span class="n">textArray</span><span class="p">.</span><span class="n">size</span>
-        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;()</span>
-        <span class="k">var</span> <span class="py">outNum</span> <span class="p">=</span> <span class="n">textSize</span><span class="p">.</span><span class="n">mod</span><span class="p">(</span><span class="n">keySize</span><span class="p">)</span>
-        <span class="k">val</span> <span class="py">row</span> <span class="p">=</span> <span class="n">textSize</span><span class="p">.</span><span class="n">div</span><span class="p">(</span><span class="n">keySize</span><span class="p">)</span>
-        <span class="k">val</span> <span class="py">keyMap</span> <span class="p">=</span> <span class="n">HashMap</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;()</span>
-        <span class="n">keyArray</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="py">num</span> <span class="p">=</span> <span class="n">row</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">outNum</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">num</span> <span class="p">=</span> <span class="n">row</span> <span class="p">+</span> <span class="m">1</span>
-                <span class="n">outNum</span><span class="o">--</span>
-            <span class="p">}</span>
-            <span class="n">keyMap</span><span class="p">[</span><span class="k">it</span><span class="p">]</span> <span class="p">=</span> <span class="n">num</span>
-        <span class="p">}</span>
-        <span class="n">println</span><span class="p">(</span><span class="n">keyMap</span><span class="p">)</span>
-        <span class="n">keyMap</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">kMap</span> <span class="o">-&gt;</span>
-            <span class="k">val</span> <span class="py">keyPlain</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">outNum</span> <span class="n">until</span> <span class="n">outNum</span> <span class="p">+</span> <span class="n">kMap</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">runCatching</span> <span class="p">{</span>
-                    <span class="n">keyPlain</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">textArray</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                <span class="p">}.</span><span class="n">onFailure</span> <span class="p">{</span>
-                    <span class="k">it</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">()</span>
-                    <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥过长或明文过短，请尝试缩短密钥位数或增加明文长度！&#34;</span><span class="p">)</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="n">outNum</span> <span class="o">+=</span> <span class="n">kMap</span><span class="p">.</span><span class="n">value</span>
-            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">EncryptList</span><span class="p">(</span><span class="n">kMap</span><span class="p">.</span><span class="n">key</span><span class="p">,</span> <span class="n">keyPlain</span><span class="p">))</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">genDecrypt</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">java.util.*</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="nn">kotlin.collections.HashMap</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">object</span> <span class="nc">Main</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@JvmStatic</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">key</span> <span class="p">=</span> <span class="s2">&#34;aoada&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">text</span> <span class="p">=</span> <span class="s2">&#34;12345&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">enc</span> <span class="p">=</span> <span class="n">text</span><span class="p">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;密钥为 </span><span class="si">${key.genKey().joinToString(&#34;&#34;)}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;明文 -&gt; </span><span class="si">$text</span><span class="s2">, 加密后 -&gt; </span><span class="si">${text.encrypt(key)}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;密文 -&gt; </span><span class="si">$enc</span><span class="s2">, 解密后 -&gt; </span><span class="si">${enc.decrypt(key)}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">data</span> <span class="k">class</span> <span class="nc">EncryptList</span><span class="p">(</span><span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">Char</span><span class="p">,</span> <span class="k">val</span> <span class="py">list</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">genKey</span><span class="p">():</span> <span class="n">MutableList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">el</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(!</span><span class="n">el</span><span class="p">.</span><span class="n">isLetterOrDigit</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥必须为数字或字母&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">var</span> <span class="py">t</span> <span class="p">=</span> <span class="n">el</span><span class="p">.</span><span class="n">uppercaseChar</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">var</span> <span class="py">digitCount</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">            <span class="k">var</span> <span class="py">letterCount</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 如果 密钥队列里已经存在当前字符了，那就对下一个字符进行处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">// 尝试顺移
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">while</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">when</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">t</span><span class="p">.</span><span class="n">isDigit</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">t</span> <span class="o">+=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">digitCount</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="p">&gt;</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">t</span> <span class="p">=</span> <span class="sc">&#39;0&#39;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(</span><span class="n">digitCount</span> <span class="p">&gt;</span> <span class="m">10</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥中的数字过多！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">t</span><span class="p">.</span><span class="n">isLetter</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">t</span> <span class="o">+=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">letterCount</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="p">&gt;</span> <span class="sc">&#39;Z&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">t</span> <span class="p">=</span> <span class="sc">&#39;A&#39;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(</span><span class="n">letterCount</span> <span class="p">&gt;</span> <span class="m">26</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥中的字母过多！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">():</span> <span class="n">MutableList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="k">it</span> <span class="o">!=</span> <span class="sc">&#39; &#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="k">it</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;.</span><span class="n">genEncrypt</span><span class="p">():</span> <span class="n">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">sortedBy</span> <span class="p">{</span> <span class="k">it</span><span class="p">.</span><span class="n">id</span> <span class="p">}.</span><span class="n">forEach</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="k">it</span><span class="p">.</span><span class="n">list</span><span class="p">.</span><span class="n">joinToString</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;.</span><span class="n">genDecrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">StringBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">column</span> <span class="p">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">xSize</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="n">column</span> <span class="o">&lt;=</span> <span class="n">xSize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">().</span><span class="n">forEach</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">this</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">el</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="k">it</span> <span class="o">==</span> <span class="n">el</span><span class="p">.</span><span class="n">id</span> <span class="o">&amp;&amp;</span> <span class="n">el</span><span class="p">.</span><span class="n">list</span><span class="p">.</span><span class="n">size</span> <span class="p">&gt;</span> <span class="n">column</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">res</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">.</span><span class="n">list</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">column</span><span class="o">++</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">keyArray</span> <span class="p">=</span> <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">textArray</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">keySize</span> <span class="p">=</span> <span class="n">keyArray</span><span class="p">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">textSize</span> <span class="p">=</span> <span class="n">textArray</span><span class="p">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">0</span> <span class="n">until</span> <span class="n">keySize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">var</span> <span class="py">j</span> <span class="p">=</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">            <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">runCatching</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">list</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">textArray</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}.</span><span class="n">onFailure</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">it</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥过长或明文过短，请尝试缩短密钥位数或增加明文长度！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="n">j</span> <span class="o">+=</span> <span class="n">keySize</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="p">&lt;</span> <span class="n">textSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">EncryptList</span><span class="p">(</span><span class="n">keyArray</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">list</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">genEncrypt</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">fun</span> <span class="nf">String</span><span class="p">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">keyArray</span> <span class="p">=</span> <span class="n">key</span><span class="p">.</span><span class="n">genKey</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">textArray</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">genPlainText</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">keySize</span> <span class="p">=</span> <span class="n">keyArray</span><span class="p">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">textSize</span> <span class="p">=</span> <span class="n">textArray</span><span class="p">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">res</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">EncryptList</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">outNum</span> <span class="p">=</span> <span class="n">textSize</span><span class="p">.</span><span class="n">mod</span><span class="p">(</span><span class="n">keySize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">row</span> <span class="p">=</span> <span class="n">textSize</span><span class="p">.</span><span class="n">div</span><span class="p">(</span><span class="n">keySize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">keyMap</span> <span class="p">=</span> <span class="n">HashMap</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">,</span> <span class="n">Int</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">keyArray</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">var</span> <span class="py">num</span> <span class="p">=</span> <span class="n">row</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">outNum</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">num</span> <span class="p">=</span> <span class="n">row</span> <span class="p">+</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">outNum</span><span class="o">--</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">keyMap</span><span class="p">[</span><span class="k">it</span><span class="p">]</span> <span class="p">=</span> <span class="n">num</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">println</span><span class="p">(</span><span class="n">keyMap</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">keyMap</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">kMap</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">val</span> <span class="py">keyPlain</span> <span class="p">=</span> <span class="n">LinkedList</span><span class="p">&lt;</span><span class="n">Char</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">outNum</span> <span class="n">until</span> <span class="n">outNum</span> <span class="p">+</span> <span class="n">kMap</span><span class="p">.</span><span class="k">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">runCatching</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">keyPlain</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">textArray</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}.</span><span class="n">onFailure</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">it</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">throw</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&#34;密钥过长或明文过短，请尝试缩短密钥位数或增加明文长度！&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">outNum</span> <span class="o">+=</span> <span class="n">kMap</span><span class="p">.</span><span class="k">value</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">EncryptList</span><span class="p">(</span><span class="n">kMap</span><span class="p">.</span><span class="n">key</span><span class="p">,</span> <span class="n">keyPlain</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">res</span><span class="p">.</span><span class="n">genDecrypt</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table></div>
 </div>
 </div>
             </div>
@@ -658,9 +658,9 @@
                     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
 <script>
-    var typeNumber = 0;
-    var errorCorrectionLevel = 'L';
-    var qr = qrcode(typeNumber, errorCorrectionLevel);
+    const typeNumber = 0;
+    const errorCorrectionLevel = 'L';
+    const qr = qrcode(typeNumber, errorCorrectionLevel);
     qr.addData('https:\/\/example.com\/posts\/%E6%98%93%E4%BD%8D%E5%AF%86%E7%A0%81\/');
     qr.make();
     document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
@@ -757,7 +757,7 @@
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2020–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;Mr.X</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
+            <div class="site-info">©&nbsp;2020–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;Mr.X</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a></div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -807,7 +807,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
-
 
 
 
